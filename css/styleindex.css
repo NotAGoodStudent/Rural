@@ -1,0 +1,39 @@
+
+.title
+{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.content
+{
+    width: 400px;
+    margin: 10% auto;
+    text-align: center;
+}
+.content .title
+{
+    font-family: 'Poppins', SansSerif;
+    letter-spacing: 10px;
+    font-size: 100px;
+    text-shadow: 1px 8px black;
+}
+
+.mainText
+{
+    margin-top: 5%;
+    letter-spacing: 1.25px;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'Grandstander';
+    font-weight: 900;
+}
+
+#mark
+{
+    background: none;
+    font-family: 'Poppins';
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
