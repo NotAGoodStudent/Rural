@@ -1,7 +1,9 @@
 <?php
 session_start();
+if(!is_null($_SESSION['currentuser']))
+{
 
-echo $_SESSION['currentUser']['name'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,14 +14,14 @@ echo $_SESSION['currentUser']['name'];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="JavaScript/index.js"></script>
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/styleindex.css">
+    <link rel="stylesheet" href="css/styleRegister.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Rural</title>
 </head>
 <header>
     <nav id ='nav'">
     <div class="logo">
-        <h4>Scape</h4>
+        <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
         <li> <a href="#" class="link">Booking</a></li>
@@ -36,16 +38,29 @@ echo $_SESSION['currentUser']['name'];
 
 </header>
 <body onscroll="scrollFunction()">
-
-
 <div class="content">
-    <h1 class="title">scape</h1>
-    <p class="mainText">
-        logged
-    </p>
-</div>
-<div class="content2">
-
+    <form id="formReg" method="post">
+        <p id="errorText" class ="errortext" hidden>Make sure passwords coincide and that you're using the right email</p>
+        <h1>book scape's house!</h1>
+        <div class="data">
+            <label for="email">Mail: </label>
+            <?php
+            echo'<input class ="inputs" type="text" id ="email" placeholder="Enter email" name="email" value=' . $_SESSION['currentuser']['email'] .' readonly>';
+            ?>
+            <label for="persons">Guests: </label>
+            <input type="number" class="inputs" id="persons" min="1" max="10" required>
+            <label for="fromDate">From: </label>
+            <?php
+            $end = date('Y/m/d',strtotime("+2 years"));
+            echo'<input class ="inputs" type="date" id ="fromDate" name="fromDate" min=' . date("Y/m/d") .' max= ' . $end . '  required>';
+            ?>
+            <label for="toDate">To: </label>
+            <?php
+            echo'<input class ="inputs" type="date" id ="toDate" name="toDate" min=' . date("Y/m/d") .' max='. $end . ' required    >';
+            ?>
+            <input type="submit" value="Book it!">
+        </div>
+    </form>
 </div>
 
 

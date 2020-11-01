@@ -24,6 +24,7 @@ if(isset($_POST['register']))
         $connection->closeConnection();
         header('location: login.php');
     }
+
 }
 ?>
 <!doctype html>
@@ -40,7 +41,7 @@ if(isset($_POST['register']))
     <title>Rural</title>
 </head>
 <header>
-    <nav id ='nav'">
+    <nav>
     <div class="logo">
         <h4><a href="index.php">Scape</a></h4>
     </div>
@@ -60,6 +61,7 @@ if(isset($_POST['register']))
 <body onscroll="scrollFunction()">
 <div class="content">
     <form id="formReg" method="post">
+        <p id="errorText" class ="errortext" hidden>Make sure passwords coincide and that you're using the right email</p>
         <h1>register</h1>
         <div class="data">
             <label for="email">Email: </label>

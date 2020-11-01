@@ -2,7 +2,7 @@
 include 'connection/Connection.php';
 session_start();
 
-$_SESSION['currentuser'];
+$_SESSION['currentuser'] = "";
 if(isset($_GET['login']))
 {
     $connection = new Connection();
@@ -13,8 +13,8 @@ if(isset($_GET['login']))
     {
         if($u['email'] == $_GET['email'] && $u['password'] == $_GET['password'])
         {
-            header('location: booking.php');
             $_SESSION['currentuser'] = $u;
+            header('location: booking.php');
             break;
         }
     }

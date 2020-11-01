@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!is_null($_SESSION['currentUser']))
+{
+    echo $_SESSION['currentUser']['name'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,7 +26,7 @@
        <ul class="nav-link" id="navul">
            <li> <a href="#" class="link">Booking</a></li>
            <li> <a href="#" class="link">About us</a></li>
-           <li> <a href="login.php" class="link">Login</a></li>
+           <li> <a id="login" href="login.php" class="link">Login</a></li>
            <li> <a href="register.php" class="link">Register</a></li>
        </ul>
        <div class="burger" onclick="toggleBurger('navul')">

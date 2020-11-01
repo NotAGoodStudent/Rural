@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7416d9df-0041-4805-a612-e57a1da31a0b" name="Default Changelist" comment="" />
+    <list default="true" id="7416d9df-0041-4805-a612-e57a1da31a0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styleRegister.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styleRegister.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +24,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jEhUZWOpBFpS5prSdsMeM6yk4A" />
   <component name="ProjectViewState">
@@ -54,6 +65,8 @@
       <workItem from="1604069060812" duration="8258000" />
       <workItem from="1604080281555" duration="11156000" />
       <workItem from="1604141729461" duration="16465000" />
+      <workItem from="1604185089137" duration="3249000" />
+      <workItem from="1604246291434" duration="11579000" />
     </task>
     <servers />
   </component>
@@ -82,5 +95,9 @@
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604160136006" />
     <state x="833" y="476" width="399" height="149" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1603981273183" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1604252398278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604252398278" />
   </component>
 </project>
