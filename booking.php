@@ -1,8 +1,30 @@
 <?php
+include 'connection/Connection.php';
 session_start();
 if(!is_null($_SESSION['currentuser']))
 {
-
+    if(isset($_POST['bookit']))
+    {
+        echo "passed if1";
+        if(strtotime($_POST['fromDate']) <= strtotime(date('Y/m/d')))
+        {
+            echo "passed if2";
+            if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
+            {
+                echo "passed if3";
+                $connection = new Connection();
+                $connection->openConnection();
+                $price = ($_POST['fromDate'] - $_POST['toDate'] * 35) * $_POST['persons'];
+                $persons = $_POST['persons'];
+                $fromDate = $_POST['fromDate'];
+                $toDate = $_POST['toDate'];
+                $creationDate = date('Y/m/d');
+                $connection->addBooking($_POST['email'], $persons, $fromDate, $toDate, $price, $creationDate);
+                $connection->closeConnection();
+                echo "added";
+            }
+        }
+    }
 }
 ?>
 <!doctype html>
@@ -58,7 +80,7 @@ if(!is_null($_SESSION['currentuser']))
             <?php
             echo'<input class ="inputs" type="date" id ="toDate" name="toDate" min=' . date("Y/m/d") .' max='. $end . ' required    >';
             ?>
-            <input type="submit" value="Book it!">
+            <input type="submit" value="Book it!" id="bookit" name="bookit">
         </div>
     </form>
 </div>

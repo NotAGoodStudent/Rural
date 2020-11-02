@@ -70,4 +70,17 @@ class Connection
             echo 'Error: ' . $e;
         }
     }
+
+    public function addBooking($email, $persons, $fromDate, $toDate, $price, $creationDate)
+    {
+        try
+        {
+            $result = $this->connection->query("INSERT INTO bookings (bookingID, userMail, clientAmount, fromDate, toDate, price, paid, bookingDate ) VALUES(null, '$email', '$persons', '$persons', '$fromDate', '$toDate', '$price', false, '$creationDate')");
+            return $result;
+
+        }catch (PDOException $e)
+        {
+            echo 'Error: ' . $e;
+        }
+    }
 }
