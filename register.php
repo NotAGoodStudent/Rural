@@ -1,5 +1,6 @@
 <?php
 include 'connection/Connection.php';
+session_start();
 if(isset($_POST['register']))
 {
     $connection = new Connection();
@@ -46,9 +47,18 @@ if(isset($_POST['register']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Booking</a></li>
+        <li> <a href="#" class="link">Services</a></li>
         <li> <a href="#" class="link">About us</a></li>
-        <li> <a href="login.php" class="link">Login</a></li>
+        <?php
+        if(is_null($_SESSION['currentuser']))
+        {
+            echo '<li> <a href="login.php" class="link">Login</a></li>';
+        }
+        else
+        {
+            echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
+        }
+        ?>
     </ul>
     <div class="burger" onclick="toggleBurger('navul')">
         <div class="line1"></div>

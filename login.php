@@ -2,7 +2,7 @@
 include 'connection/Connection.php';
 session_start();
 
-$_SESSION['currentuser'] = "";
+$_SESSION['currentuser'];
 if(isset($_GET['login']))
 {
     $connection = new Connection();
@@ -41,7 +41,7 @@ if(isset($_GET['login']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Booking</a></li>
+        <li> <a href="#" class="link">Services</a></li>
         <li> <a href="#" class="link">About us</a></li>
         <li> <a href="register.php" class="link">Register</a></li>
     </ul>

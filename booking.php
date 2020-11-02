@@ -5,23 +5,21 @@ if(!is_null($_SESSION['currentuser']))
 {
     if(isset($_POST['bookit']))
     {
-        echo "passed if1";
-        if(strtotime($_POST['fromDate']) <= strtotime(date('Y/m/d')))
+        echo 'her2 e';
+        if(strtotime($_POST['fromDate']) >= date('Y/m/d'))
         {
-            echo "passed if2";
+            echo 'her1e';
             if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
             {
-                echo "passed if3";
+                echo 'here';
                 $connection = new Connection();
                 $connection->openConnection();
-                $price = ($_POST['fromDate'] - $_POST['toDate'] * 35) * $_POST['persons'];
-                $persons = $_POST['persons'];
-                $fromDate = $_POST['fromDate'];
-                $toDate = $_POST['toDate'];
+                $diff = strtotime($_POST['toDate']) - strtotime($_POST['fromDate']) ;
                 $creationDate = date('Y/m/d');
-                $connection->addBooking($_POST['email'], $persons, $fromDate, $toDate, $price, $creationDate);
+                $days = round($diff / 86400);
+                $price = ($days * 35) * $_POST['persons'];
+                $connection->addBooking($_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
                 $connection->closeConnection();
-                echo "added";
             }
         }
     }
@@ -46,10 +44,12 @@ if(!is_null($_SESSION['currentuser']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Booking</a></li>
+        <li> <a href="#" class="link">Services</a></li>
+        <li> <a href="#" class="link">Bookings</a></li>
         <li> <a href="#" class="link">About us</a></li>
-        <li> <a href="login.php" class="link">Login</a></li>
-        <li> <a href="register.php" class="link">Register</a></li>
+        <?php
+        echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
+        ?>
     </ul>
     <div class="burger" onclick="toggleBurger('navul')">
         <div class="line1"></div>
@@ -62,7 +62,6 @@ if(!is_null($_SESSION['currentuser']))
 <body onscroll="scrollFunction()">
 <div class="content">
     <form id="formReg" method="post">
-        <p id="errorText" class ="errortext" hidden>Make sure passwords coincide and that you're using the right email</p>
         <h1>book scape's house!</h1>
         <div class="data">
             <label for="email">Mail: </label>
@@ -70,7 +69,7 @@ if(!is_null($_SESSION['currentuser']))
             echo'<input class ="inputs" type="text" id ="email" placeholder="Enter email" name="email" value=' . $_SESSION['currentuser']['email'] .' readonly>';
             ?>
             <label for="persons">Guests: </label>
-            <input type="number" class="inputs" id="persons" min="1" max="10" required>
+            <input type="number" class="inputs" name="persons" id="persons" min="1" max="10" required>
             <label for="fromDate">From: </label>
             <?php
             $end = date('Y/m/d',strtotime("+2 years"));

@@ -1,9 +1,5 @@
 <?php
 session_start();
-if(!is_null($_SESSION['currentUser']))
-{
-    echo $_SESSION['currentUser']['name'];
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,10 +20,23 @@ if(!is_null($_SESSION['currentUser']))
            <h4>Scape</h4>
        </div>
        <ul class="nav-link" id="navul">
-           <li> <a href="#" class="link">Booking</a></li>
+           <li> <a href="#" class="link">Services</a></li>
            <li> <a href="#" class="link">About us</a></li>
-           <li> <a id="login" href="login.php" class="link">Login</a></li>
-           <li> <a href="register.php" class="link">Register</a></li>
+           <?php
+           if(is_null($_SESSION['currentuser']))
+           {
+               echo '<li> <a href="login.php" class="link">Login</a></li>';
+               echo '<li> <a href="register.php" class="link">Register</a></li>';
+           }
+           else
+           {
+               echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
+               echo '<li> <a href="login.php" class="link">My Bookings</a></li>';
+               echo '<li> <a href="booking.php" class="link">Booking</a></li>';
+           }
+
+           ?>
+
        </ul>
        <div class="burger" onclick="toggleBurger('navul')">
            <div class="line1"></div>
