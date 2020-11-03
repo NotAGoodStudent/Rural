@@ -5,21 +5,35 @@ if(!is_null($_SESSION['currentuser']))
 {
     if(isset($_POST['bookit']))
     {
-        echo 'her2 e';
         if(strtotime($_POST['fromDate']) >= date('Y/m/d'))
         {
-            echo 'her1e';
             if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
             {
-                echo 'here';
                 $connection = new Connection();
                 $connection->openConnection();
-                $diff = strtotime($_POST['toDate']) - strtotime($_POST['fromDate']) ;
-                $creationDate = date('Y/m/d');
-                $days = round($diff / 86400);
-                $price = ($days * 35) * $_POST['persons'];
-                $connection->addBooking($_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
-                $connection->closeConnection();
+                $bookings = $connection->getBookings();
+                $booked = false;
+                if(!is_null($bookings))
+                {
+                    foreach ($bookings as $b) {
+                        if (strtotime($_POST['fromDate']) < strtotime($b['toDate']) && strtotime($_POST['fromDate']) >= strtotime($b['fromDate']) || strtotime($_POST['toDate']) < strtotime($b['toDate']) && strtotime($_POST['toDate']) >= strtotime($b['fromDate']))
+                        {
+                            $booked = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(!$booked)
+                {
+                    $diff = strtotime($_POST['toDate']) - strtotime($_POST['fromDate']) ;
+                    $creationDate = date('Y/m/d');
+                    $days = round($diff / 86400);
+                    $price = ($days * 35) * $_POST['persons'];
+                    $connection->addBooking($_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
+                    $connection->closeConnection();
+                    header('location: mybookings.php');
+                }
             }
         }
     }
@@ -45,7 +59,7 @@ if(!is_null($_SESSION['currentuser']))
     </div>
     <ul class="nav-link" id="navul">
         <li> <a href="#" class="link">Services</a></li>
-        <li> <a href="#" class="link">Bookings</a></li>
+        <li> <a href="mybookings.php" class="link">Bookings</a></li>
         <li> <a href="#" class="link">About us</a></li>
         <?php
         echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
@@ -80,6 +94,13 @@ if(!is_null($_SESSION['currentuser']))
             echo'<input class ="inputs" type="date" id ="toDate" name="toDate" min=' . date("Y/m/d") .' max='. $end . ' required    >';
             ?>
             <input type="submit" value="Book it!" id="bookit" name="bookit">
+            <?php
+            if(isset($_POST['bookit'])) {
+                if ($booked) {
+                    echo "<p style='margin-left: 35%; color: #FF8C00'>Woops... seems like we're busy that day</p>";
+                }
+            }
+            ?>
         </div>
     </form>
 </div>

@@ -8,14 +8,18 @@ if(isset($_GET['login']))
     $connection = new Connection();
     $connection->openConnection();
     $users = $connection->getUsers();
+    $logged = false;
 
-    foreach ($users as $u)
+    if(!is_null($users))
     {
-        if($u['email'] == $_GET['email'] && $u['password'] == $_GET['password'])
+        foreach ($users as $u)
         {
-            $_SESSION['currentuser'] = $u;
-            header('location: booking.php');
-            break;
+            if ($u['email'] == $_GET['email'] && $u['password'] == $_GET['password']) {
+                $_SESSION['currentuser'] = $u;
+                header('location: booking.php');
+                $logged = true;
+                break;
+            }
         }
     }
 
@@ -63,6 +67,13 @@ if(isset($_GET['login']))
             <label for="password">Password: </label>
             <input class ="inputs" type="password" id="password" placeholder="Enter password" name="password" required>
             <input type="submit" name="login" value="Login!">
+            <?php
+            if(isset($_GET['login'])) {
+                if (!$logged) {
+                    echo "<p style='margin-left: 35%; color: #FF8C00'>Wrong credentials introduced</p>";
+                }
+            }
+            ?>
         </div>
     </form>
 </div>

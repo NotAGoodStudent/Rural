@@ -83,4 +83,17 @@ class Connection
             echo 'Error: ' . $e;
         }
     }
+
+    public function getBookings()
+    {
+        try {
+            $result = $this->connection->query("SELECT * FROM bookings");
+            return $result;
+        } catch(PDOException $e)
+        {
+            echo 'Error: ' . $e;
+        }
+
+    }
+
 }
