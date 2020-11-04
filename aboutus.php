@@ -59,7 +59,7 @@ session_start();
 </div>
 <div class ="content2">
     <p class ="secondtext">Remember to check our
-        <a class="servLink" href="services.php">Services</a> to be aware of our prices, what we have to offer and more! </></p>
+        <a class="servLink" href="services.php">Services</a> to be aware of our prices! For more information fell free to reach us out: +34 654852314 </></p>
 </div>
 
 

@@ -20,24 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7416d9df-0041-4805-a612-e57a1da31a0b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aboutus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/styleAboutus.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/styleCheckout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/styleServices.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/Connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styleMyBookings.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styleMyBookings.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styleRegister.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styleRegister.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/background2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/background3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybookings.php" beforeDir="false" afterPath="$PROJECT_DIR$/mybookings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aboutus.php" beforeDir="false" afterPath="$PROJECT_DIR$/aboutus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styleAboutus.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styleAboutus.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/services.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +91,7 @@
       <workItem from="1604324529900" duration="5979000" />
       <workItem from="1604340573677" duration="6925000" />
       <workItem from="1604423258865" duration="14202000" />
-      <workItem from="1604477586505" duration="27059000" />
+      <workItem from="1604477586505" duration="28317000" />
     </task>
     <servers />
   </component>

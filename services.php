@@ -54,7 +54,7 @@ session_start();
         <h3>room</h3>
         <p class="text">There's no better way to start the day
         than waking up from those extremely comfortable beds.
-        Designed to give the best rest possible and around luxury!</p>
+        Designed to give the best rest possible and around luxury at a very nice price... 35€ per person!</p>
         <img class="roomImg" src="">
     </div>
     <div class="spa">
@@ -73,7 +73,7 @@ session_start();
         <p class="text">
             Do you like hiking? well good news for you.
             We have such great views around for you to visit, if you need a hiking guide
-            let us know and we'll recommend nice places for you to visit such as the one below!
+            let us know and plan a great hiking experience for you!
         </p>
 
     </div>
