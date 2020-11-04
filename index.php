@@ -17,11 +17,11 @@ session_start();
 <header>
    <nav id ='nav'">
        <div class="logo">
-           <h4>Scape</h4>
+           <h4><a href="index.php">Scape</a></h4>
        </div>
        <ul class="nav-link" id="navul">
-           <li> <a href="#" class="link">Services</a></li>
-           <li> <a href="#" class="link">About us</a></li>
+           <li> <a href="services.php" class="link">Services</a></li>
+           <li> <a href="aboutus.php" class="link">About us</a></li>
            <?php
            if(is_null($_SESSION['currentuser']))
            {
@@ -31,7 +31,7 @@ session_start();
            else
            {
                echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
-               echo '<li> <a href="login.php" class="link">My Bookings</a></li>';
+               echo '<li> <a href="mybookings.php" class="link">My Bookings</a></li>';
                echo '<li> <a href="booking.php" class="link">Booking</a></li>';
            }
 

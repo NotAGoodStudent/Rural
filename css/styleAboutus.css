@@ -1,0 +1,68 @@
+*
+{
+    padding: 0;
+    color: beige;
+    box-sizing: border-box;
+}
+
+.content
+{
+    width: 400px;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.content2
+{
+    width: 100%;
+    margin-right: 3%;
+    text-align: right;
+}
+
+.title
+{
+    font-family: 'Poppins', SansSerif;
+    letter-spacing: 10px;
+    font-size: 60px;
+    text-shadow: 1px 8px black;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.maintext
+{
+    margin-top: 5%;
+    letter-spacing: 1.25px;
+    line-height: 1.5;
+    text-align: justify;
+    font-family: 'Grandstander';
+
+}
+
+.bookingLink
+{
+    margin-top: 5%;
+    width: 60%;
+    font-size: 15px;
+    color: #FF8C00;
+    text-align: left;
+    font-family: 'Grandstander';
+}
+
+.secondtext
+{
+    letter-spacing: 1.25px;
+    width: 25%;
+    float: right;
+    margin-right: 3%;
+    font-size: 15px;
+    line-height:40px;
+    text-align: justify;
+    font-family: 'Grandstander';
+}
+
+.secondtext a
+{
+    color: #FF8C00;
+    font-family: 'Grandstander';
+}

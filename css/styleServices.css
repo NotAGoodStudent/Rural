@@ -1,0 +1,74 @@
+*
+{
+    padding: 0;
+    color: beige;
+    box-sizing: border-box;
+}
+
+.content
+{
+    display: flex;
+    margin: 5% auto;
+    width: 100%;
+    justify-content: space-around;
+}
+
+h3
+{
+    margin-top: 3%;
+    font-family: 'Poppins', SansSerif;
+    letter-spacing: 10px;
+    font-size: 30px;
+    text-shadow: 1px 8px black;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.rooms
+{
+    width: 30%;
+    background: rgba(24,24,24, 0.7);
+}
+
+.spa
+{
+    width: 30%;
+    background: rgba(24,24,24, 0.7);
+
+}
+
+.views
+{
+    width: 30%;
+    background: rgba(24,24,24, 0.7);
+}
+.text
+{
+
+    margin-top: 5%;
+    letter-spacing: 1.25px;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'Grandstander';
+}
+
+.spaImg
+{
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+.roomImg
+{
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.viewImg
+{
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+

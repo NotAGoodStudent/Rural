@@ -47,8 +47,8 @@ if(isset($_POST['register']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Services</a></li>
-        <li> <a href="#" class="link">About us</a></li>
+        <li> <a href="services.php" class="link">Services</a></li>
+        <li> <a href="aboutus.php" class="link">About us</a></li>
         <?php
         if(is_null($_SESSION['currentuser']))
         {

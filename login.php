@@ -45,8 +45,8 @@ if(isset($_GET['login']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Services</a></li>
-        <li> <a href="#" class="link">About us</a></li>
+        <li> <a href="services.php" class="link">Services</a></li>
+        <li> <a href="aboutus.php" class="link">About us</a></li>
         <li> <a href="register.php" class="link">Register</a></li>
     </ul>
     <div class="burger" onclick="toggleBurger('navul')">

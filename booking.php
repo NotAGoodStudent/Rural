@@ -26,13 +26,15 @@ if(!is_null($_SESSION['currentuser']))
 
                 if(!$booked)
                 {
+                    $_SESSION['pendingBooking'] = array();
                     $diff = strtotime($_POST['toDate']) - strtotime($_POST['fromDate']) ;
                     $creationDate = date('Y/m/d');
                     $days = round($diff / 86400);
                     $price = ($days * 35) * $_POST['persons'];
                     $connection->addBooking($_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
                     $connection->closeConnection();
-                    header('location: mybookings.php');
+                    array_push($_SESSION['pendingBooking'], $_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
+                    header('location: checkout.php');
                 }
             }
         }
@@ -58,9 +60,9 @@ if(!is_null($_SESSION['currentuser']))
         <h4><a href="index.php">Scape</a></h4>
     </div>
     <ul class="nav-link" id="navul">
-        <li> <a href="#" class="link">Services</a></li>
+        <li> <a href="services.php" class="link">Services</a></li>
         <li> <a href="mybookings.php" class="link">Bookings</a></li>
-        <li> <a href="#" class="link">About us</a></li>
+        <li> <a href="aboutus.php" class="link">About us</a></li>
         <?php
         echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
         ?>
