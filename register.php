@@ -7,24 +7,26 @@ if(isset($_POST['register']))
     $canadd = true;
     $connection->openConnection();
     $users = $connection->getUsers();
-    if(!is_null($users))
+    if($_POST['password'] == $_POST['password2'])
     {
-        foreach ($users as $u) {
-            if ($u['email'] == $_POST['email'])
-            {
-                $canadd = false;
-                break;
+        if (!is_null($users)) {
+            foreach ($users as $u) {
+                if ($u['email'] == $_POST['email']) {
+                    $canadd = false;
+                    break;
+                }
             }
         }
-    }
 
-    if($canadd && $_POST['password'] == $_POST['password2'])
-    {
-        $date = date("Y/m/d");
-        $connection->addUser($_POST['email'], $_POST['name'], $_POST['surname'], $_POST['password'], $date);
-        $connection->closeConnection();
-        header('location: login.php');
+        if ($canadd) {
+            $date = date("Y/m/d");
+            $connection->addUser($_POST['email'], $_POST['name'], $_POST['surname'], $_POST['password'], $date);
+            $connection->closeConnection();
+            header('location: login.php');
+        }
     }
+    else $canadd = false;
+
 
 }
 ?>
@@ -85,6 +87,15 @@ if(isset($_POST['register']))
             <label for="password2">Password: </label>
             <input class ="inputs" type="password" id="password2" placeholder="Re-enter password" name="password2" required>
             <input type="submit" name="register" value="Register!">
+            <?php
+            if(isset($_POST['register']))
+            {
+                if(!$canadd)
+                {
+                    echo "<p style='margin-left: 35%; color: #FF8C00'>Email already in use or passwords don't match</p>";
+                }
+            }
+            ?>
         </div>
     </form>
 </div>

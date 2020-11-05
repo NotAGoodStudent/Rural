@@ -7,6 +7,9 @@ if(!is_null($_SESSION['currentuser']))
     if(isset($_POST['bookit']))
     {
         $dateFr = date('m/d/Y', strtotime($_POST['fromDate']));
+        echo $dateFr;
+
+        //for some reason sometimes datFr goes crazy 
         if($dateFr >= date('m/d/Y'))
         {
             if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
@@ -106,12 +109,12 @@ if(!is_null($_SESSION['currentuser']))
             <input type="number" class="inputs" name="persons" id="persons" min="1" max="10" required>
             <label for="fromDate">From: </label>
             <?php
-            $end = date('Y/m/d',strtotime("+2 years"));
-            echo'<input class ="inputs" type="date" id ="fromDate" name="fromDate" min=' . date("Y/m/d") .' max= ' . $end . '  required>';
+            $end = date('m/d/Y',strtotime("+2 years"));
+            echo'<input class ="inputs" type="date" id ="fromDate" name="fromDate" min='. date("m/d/Y") .' max= ' . $end . '  required>';
             ?>
             <label for="toDate">To: </label>
             <?php
-            echo'<input class ="inputs" type="date" id ="toDate" name="toDate" min=' . date("Y/m/d") .' max='. $end . ' required    >';
+            echo'<input class ="inputs" type="date" id ="toDate" name="toDate" min=' . date("m/d/Y") .' max='. $end . ' required    >';
             ?>
             <input type="submit" value="Book it!" id="bookit" name="bookit">
             <?php
