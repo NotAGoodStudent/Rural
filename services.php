@@ -29,9 +29,9 @@ session_start();
         }
         else
         {
-            echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
             echo '<li> <a href="mybookings.php" class="link">My Bookings</a></li>';
             echo '<li> <a href="booking.php" class="link">Booking</a></li>';
+            echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
         }
 
         ?>
@@ -51,10 +51,10 @@ session_start();
 <div class="content">
     <div class="rooms">
         <img class="roomImg" src="/images/imageRes.jpg">
-        <h3>room</h3>
+        <h3>bedroom</h3>
         <p class="text">There's no better way to start the day
         than waking up from those extremely comfortable beds.
-        Designed to give the best rest possible and around luxury at a very nice price... 35€ per person!</p>
+        Designed to give the best rest possible and around luxury at a very nice price... 35€ per night!</p>
         <img class="roomImg" src="">
     </div>
     <div class="spa">

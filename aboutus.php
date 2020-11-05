@@ -29,9 +29,9 @@ session_start();
         }
         else
         {
-            echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
             echo '<li> <a href="mybookings.php" class="link">My Bookings</a></li>';
             echo '<li> <a href="booking.php" class="link">Booking</a></li>';
+            echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';
         }
 
         ?>

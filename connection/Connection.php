@@ -50,7 +50,9 @@ class Connection
     {
         try
         {
-            $result = $this->connection->query("SELECT * FROM users");
+            $statement= $this->connection->prepare("SELECT * FROM users");
+            $statement->execute();
+            $result = $statement->fetchAll();
             return $result;
 
         }catch (PDOException $e)
@@ -63,8 +65,16 @@ class Connection
     {
         try
         {
-            $result = $this->connection->query("INSERT INTO users (userID, name, surname, email, reg_date, password ) VALUES(null, '$name', '$surname', '$email', '$date', '$password')");
-            return $result;
+            $statement = $this->connection->prepare("INSERT INTO users (userID, name, surname, email, reg_date, password ) VALUES(?, ?, ?, ?, ?, ?)");
+            $statement->execute(array(
+                null,
+                $name,
+                $surname,
+                $email,
+                $date,
+                $password
+
+            ));
         } catch (PDOException $e)
         {
             echo 'Error: ' . $e;
@@ -75,8 +85,18 @@ class Connection
     {
         try
         {
-            $result = $this->connection->query("INSERT INTO bookings (bookingID, userMail, clientAmount, fromDate, toDate, price, paid, bookingDate ) VALUES(null, '$email', '$persons', '$fromDate', '$toDate', '$price', false,'$creationDate')");
-            return $result;
+            $statement = $this->connection->prepare("INSERT INTO bookings (bookingID, userMail, clientAmount, fromDate, toDate, price, paid, bookingDate ) VALUES(?, ?, ?, ?, ?, ?, ?,?)");
+            $statement->execute(array(
+                null,
+                $email,
+                $persons,
+                $fromDate,
+                $toDate,
+                $price,
+                false,
+                $creationDate
+
+            ));
 
         }catch (PDOException $e)
         {
@@ -87,7 +107,9 @@ class Connection
     public function getBookings()
     {
         try {
-            $result = $this->connection->query("SELECT * FROM bookings");
+            $statement= $this->connection->prepare("SELECT * FROM bookings");
+            $statement->execute();
+            $result = $statement->fetchAll();
             return $result;
         } catch(PDOException $e)
         {
@@ -96,14 +118,36 @@ class Connection
 
     }
 
-    public function updateBooking($email, $persons, $fromDate, $toDate, $price, $creationDate)
+    public function updateBooking($booking)
     {
         try
         {
-            $result = $this->connection->query("INSERT INTO bookings (bookingID, userMail, clientAmount, fromDate, toDate, price, paid, bookingDate ) VALUES(null, '$email', '$persons', '$fromDate', '$toDate', '$price', false,'$creationDate')");
-            return $result;
+            $query = "UPDATE bookings SET paid=true WHERE userMail=?, fromDate=?, toDate=? ";
+            $result = $this->connection->prepare($query);
+            $result->execute(array(
+                $booking[0],
+                $booking[2],
+                $booking[3]
+
+            ));
 
         }catch (PDOException $e)
+        {
+            echo 'Error: ' . $e;
+        }
+    }
+
+    public function deleteBooking($b)
+    {
+        try
+        {
+            $query = 'DELETE FROM bookings WHERE userEmail=? AND paid=false';
+            $result = $this->connection->prepare($query);
+            $result->execute(array(
+                $b['email']
+            ));
+        }
+        catch (PDOException $e)
         {
             echo 'Error: ' . $e;
         }

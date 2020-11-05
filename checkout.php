@@ -3,8 +3,13 @@ include 'connection/Connection.php';
 session_start();
 if(isset($_GET['pay']))
 {
+    echo 'set';
     $connection = new Connection();
     $connection->openConnection();
+    $booking = $_SESSION['pendingBooking'];
+    $connection->updateBooking($booking);
+    $connection->closeConnection();
+
 }
 
 

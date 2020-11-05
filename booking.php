@@ -3,34 +3,53 @@ include 'connection/Connection.php';
 session_start();
 if(!is_null($_SESSION['currentuser']))
 {
+    $booked = true;
     if(isset($_POST['bookit']))
     {
-        if(strtotime($_POST['fromDate']) >= date('Y/m/d'))
+        $dateFr = date('m/d/Y', strtotime($_POST['fromDate']));
+        if($dateFr >= date('m/d/Y'))
         {
             if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
             {
                 $connection = new Connection();
                 $connection->openConnection();
                 $bookings = $connection->getBookings();
-                $booked = false;
-                if(!is_null($bookings))
+                if(!empty($bookings))
                 {
-                    foreach ($bookings as $b) {
+                    foreach ($bookings as $b)
+                    {
                         if (strtotime($_POST['fromDate']) < strtotime($b['toDate']) && strtotime($_POST['fromDate']) >= strtotime($b['fromDate']) || strtotime($_POST['toDate']) < strtotime($b['toDate']) && strtotime($_POST['toDate']) >= strtotime($b['fromDate']))
                         {
                             $booked = true;
                             break;
                         }
+                        $booked = false;
+
                     }
+
+                }else {
+                    $booked = false;
                 }
 
                 if(!$booked)
                 {
+                    if(!is_null($_SESSION['pendingBooking']))
+                    {
+                        foreach ($bookings as $b)
+                        {
+                            if($_SESSION['pendingBooking'][0] == $b['email'] && !$b['paid'])
+                            {
+                                $connection->deleteBooking($b);
+                                break;
+                            }
+                        }
+                    }
                     $_SESSION['pendingBooking'] = array();
                     $diff = strtotime($_POST['toDate']) - strtotime($_POST['fromDate']) ;
                     $creationDate = date('Y/m/d');
                     $days = round($diff / 86400);
-                    $price = ($days * 35) * $_POST['persons'];
+                    if($_POST['fromDate'] == $_POST['toDate']) $price = 35 * $_POST['persons'];
+                    else $price = ($days * 35) * $_POST['persons'];
                     $connection->addBooking($_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);
                     $connection->closeConnection();
                     array_push($_SESSION['pendingBooking'], $_POST['email'], $_POST['persons'], $_POST['fromDate'], $_POST['toDate'], $price, $creationDate);

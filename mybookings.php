@@ -50,7 +50,7 @@ session_start();
     {
         $added = false;
         foreach ($bookings as $b) {
-            if ($_SESSION['currentuser']['email'] == $b['userMail'])
+            if ($_SESSION['currentuser']['email'] == $b['userMail'] && $b['paid'])
             {
                 echo '<div class="bookingContainer">';
                     echo '<div class="bookingInfo">';
@@ -65,7 +65,7 @@ session_start();
     }
     if(!$added)
     {
-        echo "<p style='margin: 20% 25%; color: #FF8C00; padding-left: 30%; font-size: 25px'>Nothing to check!</p>";
+        echo "<p style='margin: 20% 5%; color: #FF8C00; padding-left: 30%; font-size: 25px'>Nothing to check!</p>";
     }
 
 
