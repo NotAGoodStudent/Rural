@@ -3,13 +3,12 @@ include 'connection/Connection.php';
 session_start();
 if(isset($_GET['pay']))
 {
-    echo 'set';
     $connection = new Connection();
     $connection->openConnection();
     $booking = $_SESSION['pendingBooking'];
     $connection->updateBooking($booking);
     $connection->closeConnection();
-
+    header('location: mybookings.php');
 }
 
 
@@ -67,7 +66,7 @@ if(isset($_GET['pay']))
             <input type="text" class="items" placeholder="Cardholder Name" required>
             <input type="text" class="itemsE" placeholder="Expiry Date" required>
             <input type="text" class="itemsC" placeholder="CVV" required>
-            <input type="submit" value="pay" id ="pay">
+            <input type="submit" value="pay" name="pay">
         </div>
     </form>
 </div>

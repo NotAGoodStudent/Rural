@@ -37,10 +37,9 @@ if(!is_null($_SESSION['currentuser']))
                     {
                         foreach ($bookings as $b)
                         {
-                            if($_SESSION['pendingBooking'][0] == $b['email'] && !$b['paid'])
+                            if($_SESSION['pendingBooking'][0] == $b['userMail'] && !$b['paid'])
                             {
                                 $connection->deleteBooking($b);
-                                break;
                             }
                         }
                     }
@@ -80,7 +79,7 @@ if(!is_null($_SESSION['currentuser']))
     </div>
     <ul class="nav-link" id="navul">
         <li> <a href="services.php" class="link">Services</a></li>
-        <li> <a href="mybookings.php" class="link">Bookings</a></li>
+        <li> <a href="mybookings.php" class="link">My bookings</a></li>
         <li> <a href="aboutus.php" class="link">About us</a></li>
         <?php
         echo '<li> <a href="logout.php" class="link">Logout('. $_SESSION['currentuser']['name'] .')</a></li>';

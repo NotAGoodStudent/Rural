@@ -122,15 +122,8 @@ class Connection
     {
         try
         {
-            $query = "UPDATE bookings SET paid=true WHERE userMail=?, fromDate=?, toDate=? ";
-            $result = $this->connection->prepare($query);
-            $result->execute(array(
-                $booking[0],
-                $booking[2],
-                $booking[3]
-
-            ));
-
+            $statement = $this->connection->prepare("UPDATE bookings SET paid=true WHERE userMail=? AND fromDate=? AND toDate=? ");
+            $statement->execute([$booking[0], $booking[2], $booking[3]]);
         }catch (PDOException $e)
         {
             echo 'Error: ' . $e;
@@ -141,11 +134,9 @@ class Connection
     {
         try
         {
-            $query = 'DELETE FROM bookings WHERE userEmail=? AND paid=false';
-            $result = $this->connection->prepare($query);
-            $result->execute(array(
-                $b['email']
-            ));
+            $statement = $this->connection->prepare('DELETE FROM bookings WHERE userMail=? AND paid=false');
+            $statement->execute([$b['userMail']]);
+
         }
         catch (PDOException $e)
         {
