@@ -6,11 +6,10 @@ if(!is_null($_SESSION['currentuser']))
     $booked = true;
     if(isset($_POST['bookit']))
     {
-        $dateFr = date('m/d/Y', strtotime($_POST['fromDate']));
-        echo $dateFr;
 
-        //for some reason sometimes datFr goes crazy 
-        if($dateFr >= date('m/d/Y'))
+        $dateFr = date('Y/m/d', strtotime($_POST['fromDate']));
+
+        if($dateFr >= date('Y/m/d'))
         {
             if (strtotime($_POST['fromDate']) <= strtotime($_POST['toDate']))
             {
